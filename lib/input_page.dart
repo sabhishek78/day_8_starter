@@ -99,27 +99,39 @@ class _InputPageState extends State<InputPage> {
               child: Column(
                 children: <Widget>[
                   Text(
-                    'Height',
+                    'HEIGHT',
                     style: TextStyle(fontSize: 20,color: Colors.white60),
                   ),
                   Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
 
                         Text(
-                          '183',
-                          style: TextStyle(fontSize: 24,color: Colors.white60,),
+                          '${_sliderValue.roundToDouble()}',
+                          style: TextStyle(fontSize: 40,color: Colors.white,fontWeight:FontWeight.bold)
+                          ,
                         ),
                         Text(
                           'cm',
-                          style: TextStyle(fontSize: 08,color: Colors.white60),
+                          style: TextStyle(fontSize: 08,color: Colors.white,),
                         )],
                     ),
                   ),
-                      Slider(min: 110, max:210,value: _sliderValue, onChanged:(newRating) {
-                        setState(() => _sliderValue = newRating);
-                      },)
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          activeTrackColor: Colors.blue,
+                          inactiveTrackColor: Colors.black,
+                          trackHeight: 3.0,
+                          thumbColor: Colors.pinkAccent[100],
+                          thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
+
+                        ),
+                        child: Slider(min: 110, max:210,value: _sliderValue, onChanged:(newRating) {
+                          setState(() => _sliderValue = newRating);
+                        },),
+                      )
 
 
                 ],
