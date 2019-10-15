@@ -18,6 +18,11 @@ const TextStyle kLabelTextStyle =TextStyle(fontSize: 22,
 color: Colors.grey,
 fontWeight: FontWeight.bold,
 letterSpacing: 1);
+class Data {
+  int height;
+  int weight;
+  Data({this.height, this.weight});
+}
 
 class _InputPageState extends State<InputPage> {
   Gender gender;
@@ -247,7 +252,10 @@ class _InputPageState extends State<InputPage> {
 
               color: Color(0XFFEB1555),
               onPressed: () {
-              Navigator.push(context,MaterialPageRoute(builder: (context)=> ResultPage()));
+                 Data data = Data();
+                 data.height=height;
+                 data.weight=weight;
+              Navigator.push(context,MaterialPageRoute(builder: (context)=> ResultPage(data:data,)));
               },
               child: Text(
                 "Calculate Your BMI",style: TextStyle(color: Colors.white,fontSize: 21),
